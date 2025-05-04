@@ -1,0 +1,21 @@
+{
+  "name": "codecracker",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.7.0"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
