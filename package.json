@@ -20,5 +20,8 @@
     "prisma": "^6.7.0",
     "validator": "^13.15.0"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
 }
