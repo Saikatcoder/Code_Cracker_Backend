@@ -109,14 +109,14 @@ export const login = async (req, res) => {
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: '7d',
       });
-  
-      res.cookie('jwt', token, {
+      
+      res.cookie("jwt", token, {
         httpOnly: true,
-        sameSite: 'strict',
-        secure: process.env.NODE_ENV !== 'development',
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-      });
-  
+        sameSite: "strict",
+        secure: process.env.NODE_ENV !== "development", // Ensure it's true in production
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+    });
+    
       res.status(200).json({
         success:true,
         message: 'Login successful',
@@ -154,10 +154,33 @@ export const logout = async (req, res) => {
     }
 };
 
-export const check = async (req, res) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-};
+export const check = async (req , res)=>{
+  try {
+      res.status(200).json({
+          success:true,
+          message:"User authenticated successfully",
+          user:req.user
+      });
+  } catch (error) {
+      console.error("Error checking user:", error);
+      res.status(500).json({
+          error:"Error checking user"
+      })
+  }
+}
+
+
+
+
+
+
+// model User {
+//   id        String   @id @default(uuid()) 
+//   name      String
+//   email     String   @unique
+//   role      UserRole @default(USER)
+//   password  String
+//   image  String?
+//   createdAt DateTime @default(now())      
+//   updatedAt DateTime @updatedAt           
+// }
