@@ -28,6 +28,10 @@ export const createProblem = async (req, res)=>{
 
         }))
         const submissionResults = await submitBatch(submissions)
+
+        const tokens = submissionResults.map((res)=> res.token);
+
+        const reslts = await poolBatchResults(tokens);
     }
 
    } catch (error) {

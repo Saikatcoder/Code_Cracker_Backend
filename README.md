@@ -24,6 +24,7 @@ Environment Handling: dotenv
 │   ├── routes/          # Route definitions
 │   └── server.js        # Server entry point
 Features
+
 ✅ User registration with email & password
 ✅ Login with JWT token generation
 ✅ Secure password hashing using bcrypt
@@ -53,53 +54,60 @@ cd judge0
 docker-compose up -d
 
 # Setup JUDGE0 Locally
-<a herf=""></a>
+<a herf="./JUDGE0_Install_guide.md">Judge0 Install guide</a>
 
 1. **Clone the repository**
 
-```bash
+``
 git clone https://github.com/Saikatcoder/codecracker.git
 cd codecracker
 Install dependencies
 npm install
 Set up your environment variables
 Create a .env file in the root directory and add the following:
-
+``
+``
 PORT=5000
 DATABASE_URL=your_postgress_connection_string
 JWT_SECRET=your_jwt_secret_key
-
-Prisma setup
+``
+# Prisma setup
+``
 npx prisma generate
 npx prisma db push
-Start the server
+``
+
+# Start the server
+``
 npm run dev
 Server will be live at http://localhost:8080.
-
-📬 API Endpoints
-Method	Route	Description
-POST	/register	Register new user
-POST	/login	Login existing user
-GET	/getuser	Get user info (auth)
-Example .env File
+``
 
 
-PORT=8080
-DATABASE_URL=postgresql://myuser:mypassword@localhost:5432/mydb?schema=publi
-JWT_SECRET=super_secret_jwt_key
+# 📬 API Endpoints
+- Method	Route	Description
+- POST	/register	Register new user
+- POST	/login	Login existing user
+- GET	/getuser	Get user info (auth)
+- Example .env File
 
 
-✨ Future Improvements
- Email verification system
- Password reset via email
- Role-based authorization
- Rate limiting and security headers
- Frontend integration (React)
-🤝 Contribution
-Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+## PORT=8080
+## DATABASE_URL=postgresql://myuser:mypassword@localhost:5432/mydb?schema=publi
+## JWT_SECRET=super_secret_jwt_key
 
-📄 License
-ISC
 
-🧠 Author
-Developed by Saikat Dutta
+# ✨ Future Improvements
+ - Email verification system
+ - Password reset via email
+ - Role-based authorization
+ - Rate limiting and security headers
+ - Frontend integration (React)
+# 🤝 Contribution
+-- Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+# 📄 License
+ -- ISC
+
+# 🧠 Author
+ -- Developed by Saikat Dutta
