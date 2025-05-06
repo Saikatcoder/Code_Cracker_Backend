@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
 import authRotes from './routes/auth.router.js';
+import problemRoute from './routes/problem.route.js';
 
 dotenv.config();
 const app = express();
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/auth', authRotes);
+app.use("/api/v1/problems", problemRoute)
 
 app.listen(port, (err) => {
   if (err) console.log(err);

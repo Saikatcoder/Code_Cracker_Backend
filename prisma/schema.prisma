@@ -55,10 +55,12 @@ model Problem {
   testcases Json
   codeSnippets Json
   referenceSoluctions Json
-  
+
   createdAt DateTime @default(now())      
   updatedAt DateTime @updatedAt    
 
   //relationship
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+
