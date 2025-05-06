@@ -58,30 +58,30 @@ docker-compose up -d
 
 1. **Clone the repository**
 
-``
+```
 git clone https://github.com/Saikatcoder/codecracker.git
 cd codecracker
 Install dependencies
 npm install
 Set up your environment variables
 Create a .env file in the root directory and add the following:
-``
-``
+```
+```
 PORT=5000
 DATABASE_URL=your_postgress_connection_string
 JWT_SECRET=your_jwt_secret_key
-``
+```
 # Prisma setup
-``
+```
 npx prisma generate
 npx prisma db push
-``
+```
 
 # Start the server
-``
+```
 npm run dev
 Server will be live at http://localhost:8080.
-``
+```
 
 
 # 📬 API Endpoints
