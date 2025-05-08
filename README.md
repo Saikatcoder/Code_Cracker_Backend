@@ -1,5 +1,9 @@
 Code Cracker
-<img herf="./thumbnail.png">
+
+![Thumbnail](./images/thumbnail.png)
+
+<img src="./images/thumbnail.png" alt="Thumbnail" width="300"/>
+
 
 # About
 Code Cracker is a secure and lightweight Node.js backend for authentication built using Express, JWT, Prisma, and MongoDB. It includes user registration, login, token verification, and environment configuration — perfect for learning how to build robust authentication systems from scratch.
