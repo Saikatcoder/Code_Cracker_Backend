@@ -1,7 +1,7 @@
 Code Cracker
 
 <p align="center">
-  <img src="./images/thumbnail.png" alt="Thumbnail" width="300"/>
+  <img src="thumbnail.png" alt="Thumbnail" width="300"/>
 </p>
 
 
