@@ -1,8 +1,11 @@
 Code Cracker
 
-![Thumbnail](./images/thumbnail.png)
+<p align="center">
+  <img src="./images/thumbnail.png" alt="Thumbnail" width="700"/>
+</p>
 
-<img src="./images/thumbnail.png" alt="Thumbnail" width="300"/>
+
+<img src="thumbnail.png" alt="Thumbnail" width="300"/>
 
 
 # About
