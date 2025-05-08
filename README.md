@@ -1,4 +1,4 @@
-Code Cracker
+# Code Cracker
 
 <p align="center">
   <img src="thumbnail.png" alt="Thumbnail" width="700"/>
