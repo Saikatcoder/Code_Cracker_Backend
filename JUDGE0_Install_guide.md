@@ -127,5 +127,3 @@ newgrp docker
 
 - Official Repo: [Judge0 GitHub](https://github.com/judge0/judge0)
 - API Docs: [https://api.judge0.com](https://api.judge0.com)
-
-

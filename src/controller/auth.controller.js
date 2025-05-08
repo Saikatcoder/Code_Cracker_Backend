@@ -4,7 +4,6 @@ import { UserRole } from '../generated/prisma/index.js';
 import jwt from 'jsonwebtoken';
 import validator from 'validator';
 
-
 // reggister route controller
 export const registerUser = async (req, res) => {
   const { email, password, name } = req.body;
@@ -68,7 +67,7 @@ export const registerUser = async (req, res) => {
     });
 
     res.status(201).json({
-        success:true,
+      success: true,
       message: 'user created sucessfully',
       user: {
         id: newUser.id,
@@ -86,101 +85,95 @@ export const registerUser = async (req, res) => {
 
 // login controller
 export const login = async (req, res) => {
-    const { email, password } = req.body;
-  
-    if (!email || !password) {
-      return res.status(400).json({ error: "Email and password are required" });
-    }
-  
-    try {
-      const user = await db.user.findUnique({
-        where: { email },
-      });
-  
-      if (!user) {
-        return res.status(401).json({ error: 'User not found' });
-      }
-  
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-        return res.status(401).json({ error: 'Invalid credentials' });
-      }
-  
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: '7d',
-      });
-      
-      res.cookie("jwt", token, {
-        httpOnly: true,
-        sameSite: "strict",
-        secure: process.env.NODE_ENV !== "development", // Ensure it's true in production
-        maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  try {
+    const user = await db.user.findUnique({
+      where: { email },
     });
-    
-      res.status(200).json({
-        success:true,
-        message: 'Login successful',
-        user: {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
-          image: user.image,
-        },
-      });
-    } catch (error) {
-      console.error('Error logging in user', error);
-      res.status(500).json({ message: 'Internal Server Error' });
+
+    if (!user) {
+      return res.status(401).json({ error: 'User not found' });
     }
-  };
-  
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '7d',
+    });
+
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV !== 'development', // Ensure it's true in production
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'Login successful',
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+        image: user.image,
+      },
+    });
+  } catch (error) {
+    console.error('Error logging in user', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
 
 //   logout controller
 export const logout = async (req, res) => {
-    try {
-        res.clearCookie('jwt',{
-            httpOnly: true,
-            sameSite: 'strict',
-            secure: process.env.NODE_ENV !== 'development',
-        })
+  try {
+    res.clearCookie('jwt', {
+      httpOnly: true,
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV !== 'development',
+    });
 
-        res.status(200).json({
-            success:true,
-            message:"User logged out successfully"
-        })
-    } catch (error) {
-        console.error('Error logout user', error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
+    res.status(200).json({
+      success: true,
+      message: 'User logged out successfully',
+    });
+  } catch (error) {
+    console.error('Error logout user', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
 
-export const check = async (req , res)=>{
+export const check = async (req, res) => {
   try {
-      res.status(200).json({
-          success:true,
-          message:"User authenticated successfully",
-          user:req.user
-      });
+    res.status(200).json({
+      success: true,
+      message: 'User authenticated successfully',
+      user: req.user,
+    });
   } catch (error) {
-      console.error("Error checking user:", error);
-      res.status(500).json({
-          error:"Error checking user"
-      })
+    console.error('Error checking user:', error);
+    res.status(500).json({
+      error: 'Error checking user',
+    });
   }
-}
-
-
-
-
-
+};
 
 // model User {
-//   id        String   @id @default(uuid()) 
+//   id        String   @id @default(uuid())
 //   name      String
 //   email     String   @unique
 //   role      UserRole @default(USER)
 //   password  String
 //   image  String?
-//   createdAt DateTime @default(now())      
-//   updatedAt DateTime @updatedAt           
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
 // }

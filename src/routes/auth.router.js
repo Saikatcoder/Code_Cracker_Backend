@@ -13,8 +13,8 @@ authRotes.post('/register', registerUser);
 
 authRotes.post('/login', login);
 
-authRotes.post('/logout',authMiddleware, logout);
+authRotes.post('/logout', authMiddleware, logout);
 
-authRotes.get('/check',authMiddleware, check);
+authRotes.get('/check', authMiddleware, check);
 
 export default authRotes;

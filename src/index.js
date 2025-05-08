@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/auth', authRotes);
-app.use("/api/v1/problems", problemRoute)
+app.use('/api/v1/problems', problemRoute);
 
 app.listen(port, (err) => {
   if (err) console.log(err);
