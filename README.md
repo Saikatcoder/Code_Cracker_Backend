@@ -1,11 +1,16 @@
 Code Cracker
 
 <p align="center">
+<<<<<<< HEAD
   <img src="./images/thumbnail.png" alt="Thumbnail" width="700"/>
 </p>
 
 
 <img src="thumbnail.png" alt="Thumbnail" width="300"/>
+=======
+  <img src="thumbnail.png" alt="Thumbnail" width="300"/>
+</p>
+>>>>>>> c96b7f38b9c6ff24cde75ba582235505794d723e
 
 
 # About
