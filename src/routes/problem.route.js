@@ -1,7 +1,7 @@
 import express from 'express';
 import { authMiddleware, checkAdmin } from '../middleware/auth.middleware.js';
 import {
-  createProblem,
+  createproblem,
   deleteProblem,
   getAllProblems,
   getAllProblemsSolvedByUser,
@@ -11,11 +11,11 @@ import {
 
 const problemRoute = express.Router();
 
-problemRoute.post('/create-problem', authMiddleware, checkAdmin, createProblem);
+problemRoute.post('/create-problem', authMiddleware, checkAdmin, createproblem);
 
 problemRoute.get('/get-all-problems', authMiddleware, getAllProblems);
 
-problemRoute.post('/get-problem/:id', authMiddleware, getProblemById);
+problemRoute.get('/get-problem/:id', authMiddleware, getProblemById);
 
 problemRoute.put('/update-problem/:id',authMiddleware, checkAdmin,updateProblem );
 
@@ -24,3 +24,5 @@ problemRoute.delete('/delete-problem/:id',authMiddleware,checkAdmin,deleteProble
 problemRoute.get('/get-solved-problems',authMiddleware,getAllProblemsSolvedByUser);
 
 export default problemRoute;
+
+

@@ -5,7 +5,7 @@ import {
   getJudge0LanguageId,submitBatch, pollBatchResults
 } from "../libs/jdge0.libs.js";
 
-export const createProblem = async (req, res) => {
+export const createproblem = async (req, res) => {
   const {
     title,
     description,
@@ -79,10 +79,10 @@ export const createProblem = async (req, res) => {
       problem: newProblem,
     });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      error: "Error While Creating Problem",
-    });
+    console.error("Error in createProblem:", error);
+  return res.status(500).json({
+    error: "Error While Creating Problem",
+  });
   }
 };
 
@@ -139,7 +139,7 @@ export const getProblemById = async (req, res) => {
   }
 };
 
-
+// update problem 
 export const updateProblem = async (req, res) => {
   try {
     const { id } = req.params;
@@ -233,6 +233,23 @@ export const updateProblem = async (req, res) => {
 };
 
 
-export const deleteProblem = async (req, res) => {};
+export const deleteProblem = async (req, res) => {
+  const {id} = req.params;
+  try {
+    const problem  = await db.problem.findUnique({where:{id}});
+    if(!problem){
+    return res.status(404).json({error:"problem not found"})
+  }
+
+  await db.problem.delete({where:{id}})
+  res.status(200).json({
+    success:true,
+    message:"problem deleted success true"
+  })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: 'error white deleting the problem' })
+  }
+};
 
 export const getAllProblemsSolvedByUser = async (req, res) => {};
