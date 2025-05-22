@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 
 import authRotes from './routes/auth.router.js';
 import problemRoute from './routes/problem.route.js';
+import excutionRoute from './routes/excutionRoute.js';
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/auth', authRotes);
 app.use('/api/v1/problems', problemRoute);
+app.use("/api/v1/execute-code", excutionRoute)
+
 
 app.listen(port, (err) => {
   if (err) console.log(err);

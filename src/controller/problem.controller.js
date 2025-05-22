@@ -14,7 +14,7 @@ export const createproblem = async (req, res) => {
     examples,
     constraints,
     testcases,
-    codeSnippets,
+    codeSnippets ,
     referenceSolutions,
   } = req.body;
 
@@ -47,9 +47,6 @@ export const createproblem = async (req, res) => {
       for (let i = 0; i < results.length; i++) {
         const result = results[i];
         console.log("Result-----", result);
-        // console.log(
-        //   `Testcase ${i + 1} and Language ${language} ----- result ${JSON.stringify(result.status.description)}`
-        // );
         if (result.status.id !== 3) {
           return res.status(400).json({
             error: `Testcase ${i + 1} failed for language ${language}`,
