@@ -249,4 +249,12 @@ export const deleteProblem = async (req, res) => {
   }
 };
 
-export const getAllProblemsSolvedByUser = async (req, res) => {};
+export const getAllProblemsSolvedByUser = async (req, res) => {
+  try {
+    const problem = await db.problem.findMany({
+      
+    })
+  } catch (error) {
+    
+  }
+};
