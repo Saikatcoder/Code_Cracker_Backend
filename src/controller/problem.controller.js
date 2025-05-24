@@ -252,9 +252,31 @@ export const deleteProblem = async (req, res) => {
 export const getAllProblemsSolvedByUser = async (req, res) => {
   try {
     const problem = await db.problem.findMany({
-      
+      where:{
+        solveBy:{
+          some:{
+            userId:req.user.id
+          }
+        }
+      },
+      include:{
+        solvedBy:{
+          where:{
+            userId:req.user.id
+          }
+        }
+      }
+    });
+
+    res.status(200).json({
+      success:true,
+      message:"Problem fatched successfully",
+      problems:problem
     })
   } catch (error) {
-    
+     console.log("Error fatching problem",error);
+    res.status(500).json({
+      error: "Error While Creating Problem by id",
+    });
   }
 };
