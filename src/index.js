@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-
+import cors from "cors"
 import authRotes from './routes/auth.router.js';
 import problemRoute from './routes/problem.route.js';
 import excutionRoute from './routes/excutionRoute.js';
@@ -10,7 +10,10 @@ import playlistRoutes from './routes/playlist.route.js';
 
 dotenv.config();
 const app = express();
-
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials:true 
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -20,8 +23,8 @@ app.get('/', (req, res) => {
   res.send('welcome to codeCracker');
 });
 
-app.use('/api/v1/auth', authRotes);
-app.use('/api/v1/problems', problemRoute);
+app.use("/api/v1/auth", authRotes);
+app.use("/api/v1/problems", problemRoute);
 app.use("/api/v1/execute-code", excutionRoute)
 app.use("/api/v1/submission",submissionRoutes)
 app.use("/api/v1/playlist", playlistRoutes)
